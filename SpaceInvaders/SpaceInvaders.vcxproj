@@ -172,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="alien.png" />
+    <Image Include="background.png" />
     <Image Include="bomb.png" />
     <Image Include="missile.png" />
     <Image Include="ship.png" />

@@ -9,6 +9,10 @@ using namespace sf;
 constexpr auto ALIENS = 55;
 constexpr auto ALIENS_PER_ROW = 11;
 constexpr auto PIXELS_PER_ROW = 25;
+constexpr auto PIXELS_PER_DESCEND = 15;
+
+
+
 
 class Game {
 
@@ -17,6 +21,8 @@ private:
 	Missile m_missile;
 	Alien m_alien[ALIENS];
 	Bomb m_bomb;
+	Sprite m_sprite;
+	Texture m_texture;
 	int m_screenWidth;
 	int m_screenHeight;
 public:
@@ -37,6 +43,9 @@ public:
 			}
 			m_alien[i].moveTo(x, y);
 		}
+		m_texture.loadFromFile("background.png");
+		m_sprite.setTexture(m_texture);
+
 	}
 
 	int countAliens() {
@@ -49,6 +58,7 @@ public:
 		return count;
 	}
 	void draw(RenderWindow& window) {
+		window.draw(m_sprite);
 		if (m_bomb.isAlive()) {
 			m_bomb.draw(window);
 		}		m_ship.draw(window);
@@ -76,18 +86,20 @@ public:
 		if (m_bomb.getY() >= m_screenHeight) {
 			m_bomb.kill();
 		}
+		bool descend = false;
 		for (int i = 0; i < ALIENS; i++) {
 
 			if (m_alien[i].isAlive()) {
 				if (m_alien[i].getX() >= m_screenWidth || m_alien[i].getX() <= 0) {
-					if (!m_alien[i].turn(countAliens())) {
-						m_alien[i].moveUpDown(PIXELS_PER_ROW);
+					m_alien[i].turn();
+					if (m_alien[i].enoughTurns(countAliens())) {
+						descend = true;
 					}
 				}
 				for (int j = 0; j < ALIENS; j++) {
 					if (m_alien[i].hits(m_alien[j])) {
-						m_alien[i].turn(countAliens());
-						m_alien[j].turn(countAliens());
+						m_alien[i].turn();
+						m_alien[j].turn();
 					}
 				}
 				m_alien[i].moveLeftRight(m_alien[i].getSpeed());
@@ -113,6 +125,15 @@ public:
 
 			}
 
+		}
+
+		if (descend) {
+			for (int i = 0; i < ALIENS; i++) {
+				if (m_alien[i].isAlive()) {
+					m_alien[i].moveUpDown(PIXELS_PER_DESCEND);
+					m_alien[i].resetTurns();
+				}
+			}
 		}
 	}
 	void playerLeft() {
