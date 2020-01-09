@@ -63,22 +63,10 @@
     <Image Include="SpaceInvaders.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="ship.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="missile.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="ship2.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="ship3.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="alien.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="bomb.jpg">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="alien.png">
