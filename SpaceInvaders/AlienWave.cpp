@@ -14,7 +14,7 @@ constexpr auto PIXELS_PER_DESCEND = 15;
 
 
 
-class Game {
+class AlienWave {
 
 private:
 	Ship m_ship;
@@ -27,7 +27,7 @@ private:
 	int m_screenHeight;
 public:
 
-	Game(int width, int height) {
+	AlienWave(int width, int height) {
 		m_screenWidth = width;
 		m_screenHeight = height;
 		m_bomb.kill();
@@ -155,12 +155,15 @@ public:
 			m_missile.moveTo(m_ship.getX(), m_ship.getY());
 		}
 	}
-	bool isGameOver() {
+	bool isAlienWaveOver() {
 		if (m_ship.isAlive() && countAliens() > 0) {
 			return false;
 		} else {
 			return true;
 		}
+	}
+	bool isShipAlive() {
+		return m_ship.isAlive();
 	}
 	void playerQuit() {
 		// inget att göra...

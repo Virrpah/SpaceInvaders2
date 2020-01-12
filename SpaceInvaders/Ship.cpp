@@ -17,5 +17,7 @@ public:
 		m_soundKill.setBuffer(m_soundBufferKill);
 		//m_soundBufferRevive.loadFromFile("ring.wav");
 		m_soundRevive.setBuffer(m_soundBufferRevive);
+
+		m_isAlive = true;
 	}
 };

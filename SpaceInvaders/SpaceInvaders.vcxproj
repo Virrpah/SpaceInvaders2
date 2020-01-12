@@ -161,9 +161,9 @@
   <ItemGroup>
     <ClCompile Include="Alien.cpp" />
     <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="AlienWave.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Ship.cpp" />
   </ItemGroup>

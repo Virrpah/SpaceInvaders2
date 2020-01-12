@@ -13,7 +13,7 @@ private:
 	int m_w;
 	int m_h;
 	int m_speed;
-	bool m_isAlive;
+
 
 protected:
 	Sprite m_sprite;
@@ -22,7 +22,7 @@ protected:
 	SoundBuffer m_soundBufferKill;
 	Sound m_soundRevive;
 	Sound m_soundKill;
-
+	bool m_isAlive;
 public:
 
 	bool isAlive() {
