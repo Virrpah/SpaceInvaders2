@@ -8,10 +8,7 @@ using namespace sf;
 #pragma once
 constexpr auto ALIENS = 55;
 constexpr auto ALIENS_PER_ROW = 11;
-constexpr auto PIXELS_PER_ROW = 25;
-constexpr auto PIXELS_PER_DESCEND = 15;
-
-
+constexpr auto PIXELS_PER_ROW = 35;
 
 
 class AlienWave {
@@ -117,7 +114,8 @@ public:
 				}
 
 				if (!m_bomb.isAlive()) {
-					if (m_alien[i].getX() == m_ship.getX()) {
+
+					if (m_alien[i].getX() <= m_ship.getX() + m_ship.getW() && m_alien[i].getX() >= m_ship.getX()) {
 						m_bomb.moveTo(m_alien[i].getX(), m_alien[i].getY());
 						m_bomb.revive();
 					}
@@ -130,7 +128,7 @@ public:
 		if (descend) {
 			for (int i = 0; i < ALIENS; i++) {
 				if (m_alien[i].isAlive()) {
-					m_alien[i].moveUpDown(PIXELS_PER_DESCEND);
+					m_alien[i].moveUpDown(m_alien[i].getH());
 					m_alien[i].resetTurns();
 				}
 			}

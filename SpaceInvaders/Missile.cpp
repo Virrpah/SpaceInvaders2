@@ -9,7 +9,7 @@ private:
 public:
 	Missile() {
 		setSize(10, 20);
-		setSpeed(-5);
+		setSpeed(-10);
 		m_texture.loadFromFile("missile.png");
 		m_sprite.setTexture(m_texture);
 	//	m_soundBufferKill.loadFromFile("ring.wav");

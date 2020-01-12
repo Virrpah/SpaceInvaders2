@@ -9,7 +9,7 @@ private:
 public:
 	Bomb() {
 		setSize(10, 20);
-		setSpeed(3);
+		setSpeed(6);
 		m_texture.loadFromFile("bomb.png");
 		m_sprite.setTexture(m_texture);
 		//	m_soundBufferKill.loadFromFile("ring.wav");

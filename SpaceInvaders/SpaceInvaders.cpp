@@ -7,17 +7,18 @@ using namespace std;
 INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nCmdShow)
 {
 	constexpr auto FRAMERATE_INCREASE = 5;
-	const int screenWidth = 400; // 1024;
-	const int screenHeight = 300; //  720;
+	const int screenWidth = 800; // 1024;
+	const int screenHeight = 600; //  720;
 	int frameRateLimit = 60;
 	int lives = 3;
+	int wavenumber = 0;
 	RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Space Invaders");
 	::ShowWindow(window.getSystemHandle(), SW_MAXIMIZE);
 
 	while(lives > 0) {
 		window.setFramerateLimit(frameRateLimit);
 		AlienWave wave(screenWidth, screenHeight);
-
+		wavenumber++;
 		while (!wave.isAlienWaveOver()) {
 			if (Keyboard::isKeyPressed(Keyboard::Left)) {
 				wave.playerLeft();
@@ -47,7 +48,7 @@ INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 			wave.draw(window);
 			window.display();
 			wave.nextFrame();
-			window.setTitle("Space Invaders! " + to_string(wave.countAliens()) + " aliens left.");
+			window.setTitle("Space Invaders! Current level: " + to_string(wavenumber));
 			
 		}
 		if (!wave.isShipAlive()) {

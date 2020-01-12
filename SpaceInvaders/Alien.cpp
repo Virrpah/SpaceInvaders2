@@ -10,9 +10,9 @@ private:
 	int m_turns = 0;
 public:
 	Alien() {
-		setSize(10, 20);
+		setSize(39, 30);
 		setSpeed(2);
-		m_texture.loadFromFile("alien.png");
+		m_texture.loadFromFile("alien2.png");
 		m_sprite.setTexture(m_texture);
 		m_sprite.setColor(randomColor());
 		m_soundBufferKill.loadFromFile("pop.wav");
