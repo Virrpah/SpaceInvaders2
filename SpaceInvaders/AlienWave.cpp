@@ -92,7 +92,8 @@ public:
 		if (m_ufo.isAlive()) {
 			m_ufo.moveLeftRight(m_ufo.getSpeed());
 		}
-		if (countAliens() == 10) {
+		if (countAliens() == 50) {
+			m_ufo.moveTo(400, 300);
 			m_ufo.revive();
 		}
 		bool descend = false;
