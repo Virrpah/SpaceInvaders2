@@ -91,12 +91,17 @@ public:
 		}
 		if (m_ufo.isAlive()) {
 			m_ufo.moveLeftRight(m_ufo.getSpeed());
-		}
-		if (countAliens() == 50) {
-			m_ufo.moveTo(400, 300);
+		} else
+		if (countAliens() == 10) {
+			m_ufo.moveTo(0, 50);
 			m_ufo.revive();
 		}
 		bool descend = false;
+
+		if (m_missile.hits(m_ufo)) {
+			m_ufo.kill();
+			m_missile.kill();
+		}
 		for (int i = 0; i < ALIENS; i++) {
 
 			if (m_alien[i].isAlive()) {
@@ -125,7 +130,7 @@ public:
 				if (m_alien[i].hits(m_ship)) {
 					m_ship.kill();
 				}
-
+				
 				if (!m_bomb.isAlive()) {
 
 					if (m_alien[i].getX() <= m_ship.getX() + m_ship.getW() && m_alien[i].getX() >= m_ship.getX()) {

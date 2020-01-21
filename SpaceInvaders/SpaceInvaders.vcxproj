@@ -182,6 +182,7 @@
     <Image Include="ship3.png" />
     <Image Include="small.ico" />
     <Image Include="SpaceInvaders.ico" />
+    <Image Include="Ufo.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="boink.wav" />

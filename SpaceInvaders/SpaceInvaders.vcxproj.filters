@@ -90,6 +90,9 @@
     <Image Include="alien2.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Ufo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="boink.wav">
