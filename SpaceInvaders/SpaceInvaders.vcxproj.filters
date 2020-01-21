@@ -50,6 +50,9 @@
     <ClCompile Include="SpaceInvaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ufo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceInvaders.rc">

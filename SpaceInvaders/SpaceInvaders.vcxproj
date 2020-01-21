@@ -166,6 +166,7 @@
     <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="Ufo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceInvaders.rc" />
