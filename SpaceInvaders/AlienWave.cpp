@@ -3,6 +3,7 @@
 #include "Missile.cpp"
 #include "Alien.cpp"
 #include "Bomb.cpp"
+#include "Ufo.cpp"
 using namespace sf;
 
 #pragma once
@@ -18,6 +19,7 @@ private:
 	Missile m_missile;
 	Alien m_alien[ALIENS];
 	Bomb m_bomb;
+	Ufo m_ufo;
 	Sprite m_sprite;
 	Texture m_texture;
 	int m_screenWidth;
@@ -28,6 +30,7 @@ public:
 		m_screenWidth = width;
 		m_screenHeight = height;
 		m_bomb.kill();
+		m_ufo.kill();
 		m_ship.moveTo(m_screenWidth / 2, m_screenHeight - m_ship.getH());
 		int y = PIXELS_PER_ROW;
 		int x = 10;
@@ -59,6 +62,9 @@ public:
 		if (m_bomb.isAlive()) {
 			m_bomb.draw(window);
 		}		m_ship.draw(window);
+		if (m_ufo.isAlive()) {
+			m_ufo.draw(window);
+		}
 		for (int i = 0; i < ALIENS; i++) {
 			if (m_alien[i].isAlive()) {
 				m_alien[i].draw(window);
@@ -83,7 +89,19 @@ public:
 		if (m_bomb.getY() >= m_screenHeight) {
 			m_bomb.kill();
 		}
+		if (m_ufo.isAlive()) {
+			m_ufo.moveLeftRight(m_ufo.getSpeed());
+		} else
+		if (countAliens() == 10) {
+			m_ufo.moveTo(0, 50);
+			m_ufo.revive();
+		}
 		bool descend = false;
+
+		if (m_missile.hits(m_ufo)) {
+			m_ufo.kill();
+			m_missile.kill();
+		}
 		for (int i = 0; i < ALIENS; i++) {
 
 			if (m_alien[i].isAlive()) {
@@ -112,7 +130,7 @@ public:
 				if (m_alien[i].hits(m_ship)) {
 					m_ship.kill();
 				}
-
+				
 				if (!m_bomb.isAlive()) {
 
 					if (m_alien[i].getX() <= m_ship.getX() + m_ship.getW() && m_alien[i].getX() >= m_ship.getX()) {

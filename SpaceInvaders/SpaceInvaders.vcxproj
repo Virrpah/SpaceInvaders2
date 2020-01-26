@@ -166,6 +166,8 @@
     <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="Startmenu.cpp" />
+    <ClCompile Include="Ufo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceInvaders.rc" />
@@ -174,6 +176,7 @@
     <Image Include="alien.png" />
     <Image Include="alien2.png" />
     <Image Include="background.png" />
+    <Image Include="Background2.png" />
     <Image Include="bomb.png" />
     <Image Include="missile.png" />
     <Image Include="ship.png" />
@@ -181,6 +184,7 @@
     <Image Include="ship3.png" />
     <Image Include="small.ico" />
     <Image Include="SpaceInvaders.ico" />
+    <Image Include="Ufo.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="boink.wav" />

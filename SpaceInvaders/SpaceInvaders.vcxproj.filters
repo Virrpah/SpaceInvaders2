@@ -50,6 +50,12 @@
     <ClCompile Include="SpaceInvaders.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ufo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Startmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceInvaders.rc">
@@ -85,6 +91,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="alien2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Ufo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Background2.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
