@@ -168,6 +168,7 @@
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Startmenu.cpp" />
     <ClCompile Include="Ufo.cpp" />
+    <ClCompile Include="UfoBomb.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceInvaders.rc" />

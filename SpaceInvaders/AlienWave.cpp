@@ -4,6 +4,7 @@
 #include "Alien.cpp"
 #include "Bomb.cpp"
 #include "Ufo.cpp"
+#include "UfoBomb.cpp"
 using namespace sf;
 
 #pragma once
@@ -20,6 +21,7 @@ private:
 	Alien m_alien[ALIENS];
 	Bomb m_bomb;
 	Ufo m_ufo;
+	ufoBomb m_ufoBomb;
 	Sprite m_sprite;
 	Texture m_texture;
 	int m_screenWidth;
@@ -31,6 +33,7 @@ public:
 		m_screenHeight = height;
 		m_bomb.kill();
 		m_ufo.kill();
+		m_ufoBomb.kill();
 		m_ship.moveTo(m_screenWidth / 2, m_screenHeight - m_ship.getH());
 		int y = PIXELS_PER_ROW;
 		int x = 10;
@@ -38,7 +41,8 @@ public:
 			if (i % ALIENS_PER_ROW == 0) {
 				y = y + PIXELS_PER_ROW;
 				x = 10;
-			} else {
+			}
+			else {
 				x = x + m_alien[i].getW() + 3;
 			}
 			m_alien[i].moveTo(x, y);
@@ -73,6 +77,9 @@ public:
 		if (m_missile.isAlive()) {
 			m_missile.draw(window);
 		}
+		if (m_ufoBomb.isAlive()) {
+			m_ufoBomb.draw(window);
+		}
 
 	}
 
@@ -86,21 +93,36 @@ public:
 		if (m_bomb.isAlive()) {
 			m_bomb.moveUpDown(m_bomb.getSpeed());
 		}
+		if (m_ufoBomb.isAlive()) {
+			m_ufoBomb.moveUpDown(m_ufoBomb.getSpeed());
+		}
 		if (m_bomb.getY() >= m_screenHeight) {
 			m_bomb.kill();
 		}
+		if (m_ufoBomb.getY() >= m_screenHeight) {
+			m_ufoBomb.kill();
+		}
 		if (m_ufo.isAlive()) {
 			m_ufo.moveLeftRight(m_ufo.getSpeed());
-		} else
-		if (countAliens() == 10) {
-			m_ufo.moveTo(0, 50);
-			m_ufo.revive();
 		}
+		else
+			if (countAliens() == 1) {
+				m_ufo.moveTo(0, 50);
+				m_ufo.revive();
+			}
 		bool descend = false;
 
 		if (m_missile.hits(m_ufo)) {
 			m_ufo.kill();
 			m_missile.kill();
+		}
+		if (m_ufoBomb.hits(m_ship)) {
+			m_ship.kill();
+			m_ufoBomb.kill();
+		}
+		if (m_ufo.getX() <= m_ship.getX() + m_ship.getW() && m_ufo.getX() >= m_ship.getX()) {
+			m_ufoBomb.moveTo(m_ufo.getX(), m_ufo.getY());
+			m_ufoBomb.revive();
 		}
 		for (int i = 0; i < ALIENS; i++) {
 
@@ -127,11 +149,16 @@ public:
 					m_ship.kill();
 					m_bomb.kill();
 				}
+				if (m_ufoBomb.hits(m_ship)) {
+					m_ship.kill();
+					m_ufoBomb.kill();
+				}
 				if (m_alien[i].hits(m_ship)) {
 					m_ship.kill();
 				}
-				
+
 				if (!m_bomb.isAlive()) {
+					
 
 					if (m_alien[i].getX() <= m_ship.getX() + m_ship.getW() && m_alien[i].getX() >= m_ship.getX()) {
 						m_bomb.moveTo(m_alien[i].getX(), m_alien[i].getY());
@@ -152,7 +179,7 @@ public:
 			}
 		}
 	}
-	void playerLeft() {
+	; void playerLeft() {
 		if (m_ship.getX() >= m_ship.getW()) {
 			m_ship.moveLeftRight(-1 * m_ship.getSpeed());
 		}
@@ -174,7 +201,8 @@ public:
 	bool isAlienWaveOver() {
 		if (m_ship.isAlive() && countAliens() > 0) {
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
@@ -184,5 +212,5 @@ public:
 	void playerQuit() {
 		// inget att göra...
 	}
+   
 };
-

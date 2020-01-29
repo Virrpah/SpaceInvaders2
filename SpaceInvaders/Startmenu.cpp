@@ -22,6 +22,7 @@ INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 			if (Keyboard::isKeyPressed(Keyboard::Space)) {
 				SpaceInvaders spel;
 				spel.execute();
+				window.close();
 				//starta
 			}
 

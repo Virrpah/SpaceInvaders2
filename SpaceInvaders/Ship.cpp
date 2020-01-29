@@ -6,7 +6,7 @@ class Ship : public GameObject {
 
 public:
 	Ship() {
-		setSize(25,27);
+		setSize(20,20);
 		setSpeed(5.5);
 
 		m_texture.loadFromFile("ship2.png");
