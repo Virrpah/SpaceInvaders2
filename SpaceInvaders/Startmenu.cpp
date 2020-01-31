@@ -14,31 +14,30 @@ INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 	::ShowWindow(window.getSystemHandle(), SW_MAXIMIZE);
 	m_texture.loadFromFile("Background2.png");
 	m_sprite.setTexture(m_texture);
-		
+
 	while (true) {
-			if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-				window.close();
-			}
-			if (Keyboard::isKeyPressed(Keyboard::Space)) {
-				SpaceInvaders spel;
-				spel.execute();
-				window.close();
-				//starta
-			}
-
-			Event event;
-			while (window.pollEvent(event)) {
-
-				if (event.type == Event::Closed) {
-					window.close();
-				}
-			}
-
-			window.clear();
-			window.draw(m_sprite);
-			window.display();
+		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+			return 0;
+		}
+		if (Keyboard::isKeyPressed(Keyboard::Space)) {
+			SpaceInvaders spel;
+			window.setVisible(false);
+			spel.execute();
+			window.setVisible(true);
 		}
 
-	window.close();
+		Event event;
+		while (window.pollEvent(event)) {
+
+			if (event.type == Event::Closed) {
+				return 0;
+			}
+		}
+
+		window.clear();
+		window.draw(m_sprite);
+		window.display();
+	}
+
 	return 0;
 }
