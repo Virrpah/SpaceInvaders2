@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
 #include "AlienWave.cpp"
+#include "HUD.cpp"
 
 #pragma once
 using namespace std;
@@ -17,10 +18,12 @@ public:
 		int wavenumber = 1;
 		RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Space Invaders");
 		::ShowWindow(window.getSystemHandle(), SW_MAXIMIZE);
-
+		HUD hud;
+		hud.setLives(lives);
+		hud.setLevel(wavenumber);
 		while (lives > 0) {
 			window.setFramerateLimit(frameRateLimit);
-			AlienWave wave(screenWidth, screenHeight);
+			AlienWave wave(screenWidth, screenHeight, &hud);
 			while (!wave.isAlienWaveOver()) {
 				if (Keyboard::isKeyPressed(Keyboard::Left)) {
 					wave.playerLeft();
@@ -48,6 +51,7 @@ public:
 
 				window.clear();
 				wave.draw(window);
+				hud.draw(window);
 				window.display();
 				wave.nextFrame();
 				window.setTitle("Space Invaders! Current level: " + to_string(wavenumber));
@@ -55,13 +59,15 @@ public:
 			}
 			if (!wave.isShipAlive()) {
 				lives--;
+				hud.setLives(lives);
 			}
 			else {
 				frameRateLimit += FRAMERATE_INCREASE;
 				wavenumber++;
+				hud.setLevel(wavenumber);
 			}
 		}
-
+		hud.saveHighscore();
 		window.close();
 	}
 };

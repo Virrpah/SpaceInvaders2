@@ -163,6 +163,7 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="AlienWave.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Missile.cpp" />
     <ClCompile Include="Ship.cpp" />
@@ -193,6 +194,9 @@
     <Media Include="missile.wav" />
     <Media Include="pop.wav" />
     <Media Include="shipdeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Games.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

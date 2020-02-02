@@ -5,6 +5,7 @@
 #include "Bomb.cpp"
 #include "Ufo.cpp"
 #include "UfoBomb.cpp"
+#include "HUD.cpp"
 using namespace sf;
 
 #pragma once
@@ -24,11 +25,12 @@ private:
 	ufoBomb m_ufoBomb;
 	Sprite m_sprite;
 	Texture m_texture;
+	HUD *m_hud;
 	int m_screenWidth;
 	int m_screenHeight;
 public:
 
-	AlienWave(int width, int height) {
+	AlienWave(int width, int height, HUD *hud) {
 		m_screenWidth = width;
 		m_screenHeight = height;
 		m_bomb.kill();
@@ -49,7 +51,7 @@ public:
 		}
 		m_texture.loadFromFile("background.png");
 		m_sprite.setTexture(m_texture);
-
+		m_hud = hud;
 	}
 
 	int countAliens() {
@@ -106,7 +108,7 @@ public:
 			m_ufo.moveLeftRight(m_ufo.getSpeed());
 		}
 		else
-			if (countAliens() == 50) {
+			if (countAliens() == 10) {
 				m_ufo.moveTo(0, 50);
 				m_ufo.revive();
 			}
@@ -115,6 +117,7 @@ public:
 		if (m_missile.hits(m_ufo)) {
 			m_ufo.kill();
 			m_missile.kill();
+			m_hud->addScore(50);
 		}
 		if (m_ufoBomb.hits(m_ship)) {
 			m_ship.kill();
@@ -146,6 +149,7 @@ public:
 				if (m_missile.hits(m_alien[i])) {
 					m_alien[i].kill();
 					m_missile.kill();
+					m_hud->addScore(10);
 				}
 
 				if (m_bomb.hits(m_ship)) {
