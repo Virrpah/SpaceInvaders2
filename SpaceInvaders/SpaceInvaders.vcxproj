@@ -180,6 +180,8 @@
     <Image Include="background.png" />
     <Image Include="Background2.png" />
     <Image Include="bomb.png" />
+    <Image Include="Bomb2.png" />
+    <Image Include="Bomb3.png" />
     <Image Include="missile.png" />
     <Image Include="ship.png" />
     <Image Include="ship2.png" />
