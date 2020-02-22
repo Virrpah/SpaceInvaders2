@@ -28,6 +28,7 @@ private:
 	HUD *m_hud;
 	int m_screenWidth;
 	int m_screenHeight;
+	int m_ufoSpawn = 0;
 public:
 
 	AlienWave(int width, int height, HUD *hud) {
@@ -108,9 +109,10 @@ public:
 			m_ufo.moveLeftRight(m_ufo.getSpeed());
 		}
 		else
-			if (countAliens() == 10) {
+			if (countAliens() == 10 && m_ufoSpawn == 0) {
 				m_ufo.moveTo(0, 50);
 				m_ufo.revive();
+				m_ufoSpawn++;
 			}
 		bool descend = false;
 

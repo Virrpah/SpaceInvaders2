@@ -111,6 +111,9 @@
     <Image Include="Bomb3.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Background1080.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="boink.wav">

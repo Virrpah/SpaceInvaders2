@@ -8,11 +8,11 @@ INT WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, INT nC
 {
 	Sprite m_sprite;
 	Texture m_texture;
-	const int screenWidth = 800; // 1024;
-	const int screenHeight = 600; //  720;
+	const int screenWidth = 1920; // 1024;
+	const int screenHeight = 1080; //  720;
 	RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Space Invaders");
 	::ShowWindow(window.getSystemHandle(), SW_MAXIMIZE);
-	m_texture.loadFromFile("Background2.png");
+	m_texture.loadFromFile("Background1080.png");
 	m_sprite.setTexture(m_texture);
 
 	while (true) {

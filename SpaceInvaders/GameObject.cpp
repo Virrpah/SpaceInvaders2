@@ -9,10 +9,10 @@ class GameObject {
 
 private:
 	int m_x;
-	int m_y;
-	int m_w;
-	int m_h;
-	int m_speed;
+	int m_y; 
+	int m_w; 
+	int m_h; 
+	int m_speed; 
 
 
 protected:
@@ -22,7 +22,7 @@ protected:
 	SoundBuffer m_soundBufferKill;
 	Sound m_soundRevive;
 	Sound m_soundKill;
-	bool m_isAlive;
+	bool m_isAlive; 
 public:
 
 	bool isAlive() {
